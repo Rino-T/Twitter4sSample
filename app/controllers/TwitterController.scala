@@ -11,7 +11,14 @@ class TwitterController @Inject()(twitterService: TwitterService)(cc: MessagesCo
 
   import forms.ScreenNameForm._
 
-  def index = Action { implicit request =>
+  def index = Action.async { implicit request =>
+    val myTwitterScreenName = "Rino_T_C"
+    twitterService.fetchUserDetail(myTwitterScreenName).map { user =>
+      Ok(views.html.index(user))
+    }
+  }
+
+  def follower = Action { implicit request =>
     Ok(views.html.search(screenNameForm))
   }
 
