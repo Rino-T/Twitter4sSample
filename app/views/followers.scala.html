@@ -1,0 +1,14 @@
+@(ids: Seq[Long])
+
+
+@main("Followers") {
+  <h1>フォロワー ID</h1>
+  <div>
+    <p>count: @ids.size フォロワー</p>
+    <ul>
+    @for(id <- ids) {
+      <li>@id</li>
+    }
+    </ul>
+  </div>
+}

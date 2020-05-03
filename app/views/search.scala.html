@@ -1,0 +1,14 @@
+@import forms.ScreenNameForm
+@(screenNameForm: Form[ScreenNameForm.Data])(implicit request: MessagesRequestHeader)
+
+@import helper._
+
+
+@main("Search Follower") {
+  <h1>フォロワーIDで調査する</h1>
+  @form(action=routes.TwitterController.fetchFollowerIds) {
+    @helper.CSRF.formField
+    @helper.inputText(screenNameForm("screenName"))
+    <button>send form</button>
+  }
+}
