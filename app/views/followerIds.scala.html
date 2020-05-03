@@ -1,8 +1,8 @@
-@(ids: Seq[Long])
+@(ids: Seq[Long], account: String)
 
 
 @main("Followers") {
-  <h1>フォロワー ID</h1>
+  <h2>@account の フォロワーIDのリスト</h2>
   <div>
     <p>count: @ids.size フォロワー</p>
     <ul>

@@ -5,7 +5,8 @@
 
 
 @main("Search Follower") {
-  <h1>フォロワーIDで調査する</h1>
+  <h2>対象アカウントのフォロワーのIDを取得する</h2>
+  <p>screenNameに入力したidのアカウントのフォロワーIDのリストを取得します</p>
   @form(action=routes.TwitterController.fetchFollowerIds) {
     @helper.CSRF.formField
     @helper.inputText(screenNameForm("screenName"))

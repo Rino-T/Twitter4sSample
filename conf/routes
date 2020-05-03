@@ -5,8 +5,8 @@
 # Home page
 GET         /                                         controllers.TwitterController.index
 
-GET         /followers                                controllers.TwitterController.follower
-POST        /followers                                controllers.TwitterController.fetchFollowerIds
+GET         /followers/search                         controllers.TwitterController.follower
+POST        /followerIds                              controllers.TwitterController.fetchFollowerIds
 GET         /followers/:screenName                    controllers.TwitterController.followers(screenName: String)
 
 GET         /api/user/:id                             controllers.TwitterApiController.userDetailById(id: Long)
