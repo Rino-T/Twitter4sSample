@@ -1,7 +1,5 @@
 package controllers
 
-import java.io.{BufferedWriter, FileWriter}
-
 import javax.inject.Inject
 import models.services.TwitterService
 import play.api.libs.json.Json
