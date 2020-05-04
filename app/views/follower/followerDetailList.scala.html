@@ -1,0 +1,32 @@
+@(twitterUsers: TwitterUsers, screenName: String)
+
+@main("フォロワー詳細テーブル") {
+  <h2>フォロワー詳細テーブル</h2>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>screenName</th>
+      <th>description</th>
+      <th>email</th>
+      <th>フォロワー</th>
+      <th>フォロー</th>
+      <th>url</th>
+      <th>createdAt</th>
+    </tr>
+    @for(user <- twitterUsers.users) {
+      <tr>
+        <td>@user.id</td>
+        <td>@user.screenName</td>
+        <td>@user.description</td>
+        <td>@user.email</td>
+        <td>@user.followersCount</td>
+        <td>@user.friendsCount</td>
+        <td>@user.url</td>
+        <td>@user.createdAt</td>
+      </tr>
+    }
+  </table>
+
+  <a href=@routes.TwitterController.followerDetailTable(screenName, Some(twitterUsers.previousCursor))>前へ</a>
+  <a href=@routes.TwitterController.followerDetailTable(screenName, Some(twitterUsers.nextCursor))>次へ</a>
+}

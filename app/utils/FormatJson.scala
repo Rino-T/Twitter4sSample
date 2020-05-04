@@ -1,9 +1,11 @@
 package utils
 
-import models.{TwitterIds, TwitterUser, TwitterUsers}
+import models.{CursorReq, TwitterIds, TwitterUser, TwitterUsers}
 import play.api.libs.json.Json
 
 object FormatJson {
+
+  implicit val jsonCursorReq = Json.format[CursorReq]
 
   implicit val jsonTwitterIds = Json.format[TwitterIds]
 

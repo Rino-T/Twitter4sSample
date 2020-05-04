@@ -10,8 +10,8 @@
   <body>
     <h1>Twitter</h1>
     <header>
-      <li><a href="/">トップ</a></li>
-      <li><a href="/followers/search">フォロワー</a></li>
+      <li><a href=@routes.TwitterController.index>トップ</a></li>
+      <li><a href=@routes.TwitterController.searchFollowerIds>指定したIDのフォロワーのIDのリストを取得する</a></li>
     </header>
     @content
   </body>

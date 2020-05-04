@@ -6,13 +6,19 @@
   <div>
     <p>count: @ids.ids.size フォロワー</p>
     <ul>
-      <li>前へ: @ids.previousCursor</li>
-      <li>次へ: @ids.nextCursor</li>
+      @if(ids.previousCursor != 0L) {
+        <a href=@routes.TwitterController.followerIds(account, Some(ids.previousCursor))>前へ</a>
+      }
+      @if(ids.nextCursor != 0L) {
+        <a href=@routes.TwitterController.followerIds(account, Some(ids.nextCursor))>次へ</a>
+      }
     </ul>
     <ul>
     @for(id <- ids.ids) {
       <li>@id</li>
     }
     </ul>
+    <a href=@routes.TwitterController.followerIds(account, Some(ids.previousCursor))>前へ</a>
+    <a href=@routes.TwitterController.followerIds(account, Some(ids.nextCursor))>次へ</a>
   </div>
 }

@@ -2,6 +2,10 @@ package models
 
 import java.time.Instant
 
+case class CursorReq(
+  cursor: Option[Long]
+)
+
 case class TwitterIds(
   ids: Seq[Long],
   nextCursor: Long,

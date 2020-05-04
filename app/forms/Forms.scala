@@ -1,8 +1,9 @@
 package forms
 
+import play.api.data._
+import play.api.data.Forms._
+
 object ScreenNameForm {
-  import play.api.data._
-  import play.api.data.Forms._
 
   case class Data(screenName: String)
 

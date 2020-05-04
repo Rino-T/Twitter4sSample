@@ -10,13 +10,13 @@ class TwitterService @Inject()(implicit ec: ExecutionContext) {
   val restClient = TwitterRestClient()
 
   def fetchFollowerIds(screenName: String, cursor: Long = -1, count: Int = 5000) = {
-    restClient.followerIdsForUser(screenName, cursor = cursor, count = count).map { response =>
+    restClient.followerIdsForUser(screenName, cursor, count).map { response =>
       TwitterIds(response.data.ids, response.data.next_cursor, response.data.previous_cursor)
     }
   }
 
-  def fetchFollowersForUser(screenName: String, count: Int = 20) = {
-    restClient.followersForUser(screenName, count = count).map { response =>
+  def fetchFollowersForUser(screenName: String, cursor: Long = -1, count: Int = 20) = {
+    restClient.followersForUser(screenName, cursor, count).map { response =>
       val users = response.data.users.map { user =>
         TwitterUser(
           user.id,
