@@ -28,3 +28,12 @@ case class TwitterUsers(
   nextCursor: Long,
   previousCursor: Long
 )
+
+case class AccountHistoricalDataDaily(
+  id: Int,
+  screenName: String,
+  twitterId: Long,
+  followerCount: Int,
+  followCount: Int,
+  date: Instant
+)

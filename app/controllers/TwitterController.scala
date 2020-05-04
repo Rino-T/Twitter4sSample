@@ -31,7 +31,7 @@ class TwitterController @Inject()(twitterService: TwitterService)(cc: MessagesCo
 
   def followerIds(screenName: String, cursor: Option[Long]) = Action.async { implicit request =>
     twitterService.fetchFollowerIds(screenName, cursor.getOrElse(-1)).map { ids =>
-      Ok(views.html.followerIds(ids, screenName))
+      Ok(views.html.follower.followerIds(ids, screenName))
     }.recover {
       case e: TwitterException => NotFound(views.html.sorry(e))
       case e: Exception => InternalServerError(views.html.sorry(e))

@@ -4,7 +4,7 @@ services:
     image: mariadb:10.3
     environment:
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=private_diary
+      - MYSQL_DATABASE=twiiter_data
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=password
     ports:
