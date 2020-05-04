@@ -1,5 +1,6 @@
 package controllers
 
+import com.danielasfregola.twitter4s.exceptions.TwitterException
 import javax.inject.Inject
 import models.services.TwitterService
 import play.api.mvc.{MessagesAbstractController, MessagesControllerComponents}
@@ -31,6 +32,9 @@ class TwitterController @Inject()(twitterService: TwitterService)(cc: MessagesCo
   def followers(screenName: String) = Action.async { implicit request =>
     twitterService.fetchFollowerIds(screenName).map { ids =>
       Ok(views.html.followerIds(ids, screenName))
+    }.recover {
+      case e: TwitterException => NotFound(views.html.sorry(e))
+      case e: Exception => InternalServerError(views.html.sorry(e))
     }
   }
 }

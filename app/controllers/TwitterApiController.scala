@@ -14,6 +14,8 @@ class TwitterApiController @Inject()(twitterService: TwitterService)(cc: Message
   def followers(screenName: String) = Action.async { implicit request =>
     twitterService.fetchFollowerIds(screenName).map { ids =>
       Ok(Json.toJson(ids))
+    }.recover {
+      case e: Exception => NotFound(e.toString)
     }
   }
 
