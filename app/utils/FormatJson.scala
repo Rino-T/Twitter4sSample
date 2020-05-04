@@ -1,11 +1,13 @@
 package utils
 
-import com.danielasfregola.twitter4s.entities.User
-import models.{TwitterUser, TwitterUserInfo}
+import models.{TwitterIds, TwitterUser, TwitterUsers}
 import play.api.libs.json.Json
 
 object FormatJson {
-  implicit val jsonTwitterData = Json.format[TwitterUserInfo]
+
+  implicit val jsonTwitterIds = Json.format[TwitterIds]
 
   implicit val jsonTwitterUser = Json.format[TwitterUser]
+
+  implicit val jsonTwitterUsers = Json.format[TwitterUsers]
 }

@@ -1,12 +1,16 @@
-@(ids: Seq[Long], account: String)
+@(ids: TwitterIds, account: String)
 
 
 @main("Followers") {
   <h2>@account の フォロワーIDのリスト</h2>
   <div>
-    <p>count: @ids.size フォロワー</p>
+    <p>count: @ids.ids.size フォロワー</p>
     <ul>
-    @for(id <- ids) {
+      <li>前へ: @ids.previousCursor</li>
+      <li>次へ: @ids.nextCursor</li>
+    </ul>
+    <ul>
+    @for(id <- ids.ids) {
       <li>@id</li>
     }
     </ul>

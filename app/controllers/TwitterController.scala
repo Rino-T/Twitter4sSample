@@ -30,7 +30,7 @@ class TwitterController @Inject()(twitterService: TwitterService)(cc: MessagesCo
 
   def followers(screenName: String) = Action.async { implicit request =>
     twitterService.fetchFollowerIds(screenName).map { ids =>
-      Ok(views.html.followers(ids))
+      Ok(views.html.followerIds(ids, screenName))
     }
   }
 }

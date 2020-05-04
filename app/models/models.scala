@@ -2,8 +2,10 @@ package models
 
 import java.time.Instant
 
-case class TwitterUserInfo(
-  id: Long
+case class TwitterIds(
+  ids: Seq[Long],
+  nextCursor: Long,
+  previousCursor: Long
 )
 
 case class TwitterUser(
@@ -15,4 +17,10 @@ case class TwitterUser(
   description: Option[String],
   url: Option[String],
   createdAt: Instant
+)
+
+case class TwitterUsers(
+  users: Seq[TwitterUser],
+  nextCursor: Long,
+  previousCursor: Long
 )

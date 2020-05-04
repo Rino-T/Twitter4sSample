@@ -2,22 +2,22 @@ package models.services
 
 import com.danielasfregola.twitter4s.TwitterRestClient
 import javax.inject.Inject
-import models.TwitterUser
+import models.{TwitterIds, TwitterUser, TwitterUsers}
 
 import scala.concurrent.ExecutionContext
 
 class TwitterService @Inject()(implicit ec: ExecutionContext) {
   val restClient = TwitterRestClient()
 
-  def fetchFollowerIds(screenName: String, count: Int = 5000) = {
-    restClient.followerIdsForUser(screenName, cursor = -1, count = count).map { response =>
-      response.data.ids
+  def fetchFollowerIds(screenName: String, cursor: Long = -1, count: Int = 5000) = {
+    restClient.followerIdsForUser(screenName, cursor = cursor, count = count).map { response =>
+      TwitterIds(response.data.ids, response.data.next_cursor, response.data.previous_cursor)
     }
   }
 
   def fetchFollowersForUser(screenName: String, count: Int = 20) = {
     restClient.followersForUser(screenName, count = count).map { response =>
-      response.data.users.map { user =>
+      val users = response.data.users.map { user =>
         TwitterUser(
           user.id,
           user.screen_name,
@@ -28,6 +28,8 @@ class TwitterService @Inject()(implicit ec: ExecutionContext) {
           user.url,
           user.created_at)
       }
+
+      TwitterUsers(users, response.data.next_cursor, response.data.previous_cursor)
     }
   }
 
