@@ -1,6 +1,6 @@
-drop table if exists twiiter_data.AccountHistoricalDataDaily;
+drop table if exists twiiter_data.AccountHistDaily;
 
-create table twiiter_data.AccountHistoricalDataDaily
+create table twiiter_data.AccountHistDaily
 (
     id            int auto_increment
         primary key,

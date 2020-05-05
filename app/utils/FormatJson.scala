@@ -1,6 +1,6 @@
 package utils
 
-import models.{CursorReq, TwitterIds, TwitterUser, TwitterUsers}
+import models.{AccountHistData, CursorReq, TwitterIds, TwitterUser, TwitterUsers}
 import play.api.libs.json.Json
 
 object FormatJson {

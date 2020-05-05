@@ -1,4 +1,4 @@
-name := """play-scala-slick-example"""
+name := """Twitter4sSample"""
 organization := "com.rinotc"
 
 version := "1.0"
@@ -13,6 +13,7 @@ libraryDependencies ++= Seq(
   "org.mariadb.jdbc" % "mariadb-java-client" % "2.2.1",
   "com.zaxxer" % "HikariCP" % "2.7.4",
   "com.danielasfregola" %% "twitter4s" % "6.2",
+  "net.codingwell" %% "scala-guice" % "4.2.6",
   specs2 % Test,
 )
 

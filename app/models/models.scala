@@ -29,7 +29,7 @@ case class TwitterUsers(
   previousCursor: Long
 )
 
-case class AccountHistoricalDataDaily(
+case class AccountHistData(
   id: Int,
   screenName: String,
   twitterId: Long,
