@@ -7,6 +7,7 @@ Twitter4s を使ったサンプルプロジェクト
 * [Play Framework](https://www.playframework.com/documentation/2.6.x/Requirements): 2.6.25
 * [Twitter4s](https://github.com/DanielaSfregola/twitter4s): 6.2
 * Scala: 2.11.12
+* Java: AdoptOpenJDK 1.8
 
 Twitter4s 6.2 時点だと、Play Framework 2.7.x 以上の場合 Akka HTTP のバージョンが合わず利用できないため、Play 2.6.x を利用している
 
