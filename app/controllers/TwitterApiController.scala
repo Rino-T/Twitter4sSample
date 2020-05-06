@@ -10,8 +10,7 @@ import utils.ValidateJson
 
 import scala.concurrent.ExecutionContext
 
-class TwitterApiController @Inject()(twitterService: TwitterService,
-                                     accountHistService: AccountHistService)
+class TwitterApiController @Inject()(twitterService: TwitterService)
                                     (cc: MessagesControllerComponents)
                                     (implicit ec: ExecutionContext) extends MessagesAbstractController(cc) with ValidateJson {
 
