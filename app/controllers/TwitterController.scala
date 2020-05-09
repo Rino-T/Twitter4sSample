@@ -3,17 +3,18 @@ package controllers
 import com.danielasfregola.twitter4s.exceptions.TwitterException
 import javax.inject.Inject
 import models.services.TwitterService
+import play.api.Configuration
 import play.api.mvc.{MessagesAbstractController, MessagesControllerComponents}
 
 import scala.concurrent.ExecutionContext
 
-class TwitterController @Inject()(twitterService: TwitterService)(cc: MessagesControllerComponents)
+class TwitterController @Inject()(twitterService: TwitterService, config: Configuration)(cc: MessagesControllerComponents)
                                  (implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   import forms.ScreenNameForm._
 
   def index = Action.async { implicit request =>
-    val myTwitterScreenName = "Rino_T_C"
+    val myTwitterScreenName = config.get[String]("twitter.myAccount.screenName")
     twitterService.fetchUserDetail(myTwitterScreenName).map { user =>
       Ok(views.html.index(user))
     }
